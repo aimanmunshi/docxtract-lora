@@ -10,9 +10,25 @@ apples-to-apples before/after comparison depends on this).
 import json
 import re
 
+import torch
 from datasets import load_dataset
+from transformers import DonutProcessor, VisionEncoderDecoderModel
 
 DATASET_NAME = "naver-clova-ix/cord-v2"
+BASE_MODEL_NAME = "naver-clova-ix/donut-base"
+
+# donut-base defaults to a 2560x1920 input resolution (tuned for dense
+# full-page documents). That's too large to fit LoRA fine-tuning in 6GB of
+# VRAM, so we downsize to 960x720 for both training and evaluation — smaller
+# than the original Donut paper's CORD setting (1280x960), traded off
+# deliberately for speed/memory on a single laptop GPU. Kept identical across
+# train/eval/infer so no code path sees a resolution mismatch.
+IMAGE_SIZE = {"height": 960, "width": 720}
+
+# 99% of the 200-example train subset's linearized target sequences fit
+# within 768 tokens (see data exploration); the remaining ~1% get truncated,
+# an accepted tradeoff for keeping decoder sequence length manageable.
+MAX_TARGET_LENGTH = 768
 
 # Chosen in data/explore_data.py after inspecting full split sizes.
 # Kept small and deterministic (fixed seed) so training stays fast on a
@@ -165,3 +181,107 @@ def field_level_accuracy(pred_fields: dict, gt_fields: dict) -> dict:
         "recall": recall,
         "f1": f1,
     }
+
+
+def get_device() -> str:
+    return "cuda" if torch.cuda.is_available() else "cpu"
+
+
+def load_base_processor_and_model(dtype=None):
+    """
+    Load donut-base with its native (pretrained-only) vocabulary and our
+    reduced input resolution. Used as-is for the pre-fine-tuning baseline,
+    and as the starting point before vocab extension for LoRA training.
+    """
+    processor = DonutProcessor.from_pretrained(BASE_MODEL_NAME)
+    processor.image_processor.size = IMAGE_SIZE
+    processor.image_processor.do_align_long_axis = False
+
+    model = VisionEncoderDecoderModel.from_pretrained(BASE_MODEL_NAME)
+
+    device = get_device()
+    if dtype is None:
+        dtype = torch.float16 if device == "cuda" else torch.float32
+    model.to(device, dtype=dtype)
+    model.eval()
+    return processor, model
+
+
+def extend_vocab_for_cord(processor, model, train_split) -> None:
+    """
+    Add CORD's field-name special tokens + task start/end tokens to the
+    tokenizer and resize the decoder's embedding table + tied lm_head to
+    match, in place. Must be called before LoRA is attached, since the LoRA
+    adapter's `modules_to_save` entries need to reference the resized
+    embedding/head modules by name.
+    """
+    special_tokens = build_special_tokens(train_split)
+    processor.tokenizer.add_special_tokens({"additional_special_tokens": special_tokens})
+    model.decoder.resize_token_embeddings(len(processor.tokenizer))
+
+    task_start_id = processor.tokenizer.convert_tokens_to_ids(TASK_START_TOKEN)
+    model.config.decoder_start_token_id = task_start_id
+    model.config.pad_token_id = processor.tokenizer.pad_token_id
+    model.generation_config.decoder_start_token_id = task_start_id
+    model.generation_config.pad_token_id = processor.tokenizer.pad_token_id
+
+
+# Full dotted module paths (from the top-level VisionEncoderDecoderModel) for
+# the decoder's tied input-embedding / output-head. LoRA on q/k/v/out_proj
+# alone can't teach the model to *emit* newly-added vocabulary, since it
+# never touches the embedding table — these must be fully trainable
+# (peft `modules_to_save`) instead of LoRA-adapted.
+EMBED_MODULE_NAME = "decoder.model.decoder.embed_tokens"
+LM_HEAD_MODULE_NAME = "decoder.lm_head"
+
+# Scoped to the decoder only: donut-base's encoder (Swin) uses different
+# Linear names (query/key/value/dense), so this suffix match never touches
+# the pretrained vision encoder — see project notes on why only the decoder's
+# attention is adapted for this task.
+LORA_TARGET_MODULES = ["q_proj", "k_proj", "v_proj", "out_proj"]
+
+
+@torch.no_grad()
+def generate_and_parse(model, processor, image, prompt_token: str, max_length: int = MAX_TARGET_LENGTH):
+    """
+    Run image -> structured-JSON generation identically for baseline,
+    fine-tuned, and single-image inference use. Returns (raw_decoded_text,
+    parsed_dict).
+    """
+    device = next(model.parameters()).device
+    dtype = next(model.parameters()).dtype
+
+    pixel_values = processor(image.convert("RGB"), return_tensors="pt").pixel_values
+    pixel_values = pixel_values.to(device, dtype=dtype)
+
+    decoder_input_ids = processor.tokenizer(
+        prompt_token, add_special_tokens=False, return_tensors="pt"
+    ).input_ids.to(device)
+
+    output_ids = model.generate(
+        pixel_values,
+        decoder_input_ids=decoder_input_ids,
+        max_length=max_length,
+        pad_token_id=processor.tokenizer.pad_token_id,
+        eos_token_id=processor.tokenizer.eos_token_id,
+        num_beams=1,
+        do_sample=False,
+    )
+
+    raw_text = processor.tokenizer.batch_decode(output_ids)[0]
+
+    # Strip only the wrapper tokens we explicitly fed/expect (pad, the
+    # decoder prompt we supplied, and its matching end token if any) —
+    # NOT all special tokens, since the CORD field tokens (<s_menu>, etc.)
+    # must survive for token2json to parse the structure. Leaving the
+    # <s_cord-v2>...</s_cord-v2> wrapper in place would make token2json
+    # parse it as an actual outer field, adding a spurious wrapper key.
+    clean_text = raw_text.replace(processor.tokenizer.pad_token, "")
+    clean_text = clean_text.replace(processor.tokenizer.eos_token, "")
+    clean_text = clean_text.replace(prompt_token, "", 1)
+    if prompt_token == TASK_START_TOKEN:
+        clean_text = clean_text.replace(TASK_END_TOKEN, "")
+    clean_text = clean_text.strip()
+
+    parsed = processor.token2json(clean_text)
+    return raw_text, parsed

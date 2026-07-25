@@ -1,0 +1,642 @@
+{
+  "mode": "baseline",
+  "model": "naver-clova-ix/donut-base",
+  "summary": {
+    "num_examples": 100,
+    "micro_precision": 0.0,
+    "micro_recall": 0.0,
+    "micro_f1": 0.0,
+    "macro_f1": 0.0,
+    "total_correct_fields": 0,
+    "total_predicted_fields": 100,
+    "total_gt_fields": 1301,
+    "eval_time_seconds": 79.48282241821289
+  },
+  "example_details": [
+    {
+      "index": 0,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "Tahu Isi",
+        "menu.0.cnt": "2",
+        "menu.0.price": "78,000",
+        "menu.1.nm": "Tea",
+        "menu.1.cnt": "5",
+        "menu.1.price": "30,000",
+        "menu.2.nm": "Kepiting 7-8.4ons - Chilly 0.7 1",
+        "menu.2.cnt": "1",
+        "menu.2.price": "297,490",
+        "menu.3.nm": "Udang Telur Asin - Regular",
+        "menu.3.cnt": "1",
+        "menu.3.price": "47,500",
+        "menu.4.nm": "Kailan 2 Rasa",
+        "menu.4.cnt": "1",
+        "menu.4.price": "45,000",
+        "menu.5.nm": "Mantau - 2 pcs",
+        "menu.5.cnt": "1",
+        "menu.5.price": "25,000",
+        "menu.6.nm": "Sweet Tea",
+        "menu.6.cnt": "2",
+        "menu.6.price": "16,000",
+        "menu.7.nm": "Nasi Putih",
+        "menu.7.cnt": "7",
+        "menu.7.price": "42,000",
+        "menu.8.nm": "Mantau - 3 pcs",
+        "menu.8.cnt": "1",
+        "menu.8.price": "37,500",
+        "sub_total.subtotal_price": "618,490",
+        "sub_total.tax_price": "61,849",
+        "total.total_price": "680,500",
+        "total.menutype_cnt": "9",
+        "total.menuqty_cnt": "21"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 32,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 1,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "NASI GOR SFD TLR",
+        "menu.0.unitprice": "35.000",
+        "menu.0.cnt": "1",
+        "menu.0.price": "Rp 35.000",
+        "menu.1.nm": "ES TEH TAWAR",
+        "menu.1.unitprice": "3.000",
+        "menu.1.cnt": "1",
+        "menu.1.price": "Rp 3.000",
+        "total.total_price": "Rp 38.000",
+        "total.cashprice": "Rp 50.000",
+        "total.changeprice": "Rp 12.000"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 11,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 2,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.nm": "AIR MINERAL",
+        "menu.price": "8,181",
+        "sub_total.subtotal_price": "8,181",
+        "sub_total.tax_price": "818",
+        "total.total_price": "8,999",
+        "total.cashprice": "10,000",
+        "total.changeprice": "1,001"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 7,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 3,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.nm": "Propolis Cair",
+        "menu.unitprice": "156000",
+        "menu.cnt": "1",
+        "menu.price": "156000",
+        "total.total_price": "156000",
+        "total.cashprice": "156000",
+        "total.changeprice": "Rp. 0"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 7,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 4,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "GRILLED BABY POTATO (R",
+        "menu.0.cnt": "1",
+        "menu.0.price": "50,500",
+        "menu.1.nm": "HOT TUNA",
+        "menu.1.cnt": "1",
+        "menu.1.price": "67,000",
+        "menu.2.nm": "HOT TUNA",
+        "menu.2.cnt": "1",
+        "menu.2.discountprice": "-67,000",
+        "menu.2.price": "67,000",
+        "sub_total.subtotal_price": "117,500",
+        "sub_total.service_price": "11,070",
+        "sub_total.tax_price": "19,557",
+        "total.total_price": "148,127"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 14,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 5,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.nm": "Chicken HCC. 1Pcs",
+        "menu.cnt": "1",
+        "menu.price": "15.000",
+        "sub_total.subtotal_price": "15,000",
+        "sub_total.tax_price": "1,500",
+        "total.total_price": "16,500",
+        "total.cashprice": "50,000",
+        "total.changeprice": "33,500",
+        "total.menuqty_cnt": "1"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 9,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 6,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.nm": "Superice Cauburry",
+        "menu.cnt": "1",
+        "menu.price": "17,727",
+        "sub_total.subtotal_price": "17,727",
+        "sub_total.tax_price": "1,773",
+        "total.total_price": "19,500",
+        "total.cashprice": "100,000",
+        "total.changeprice": "80,500"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 8,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 7,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "PKT AYAM",
+        "menu.0.price": "33,000",
+        "menu.1.nm": "GULAI OTAK",
+        "menu.1.price": "23,000",
+        "sub_total.subtotal_price": "56,000",
+        "sub_total.tax_price": "5,600",
+        "total.total_price": "61,600",
+        "total.cashprice": "61,600",
+        "total.menuqty_cnt": "2.00"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 9,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 8,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.nm": "- TICKET CP",
+        "menu.num": "901016",
+        "menu.unitprice": "60.000",
+        "menu.cnt": "4",
+        "menu.price": "240,000",
+        "total.total_price": "240.000",
+        "total.cashprice": "250.000",
+        "total.changeprice": "10,000",
+        "total.menuqty_cnt": "(Qty=4.00)"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 9,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 9,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.nm": "Cuka Apel Tetes",
+        "menu.unitprice": "198000",
+        "menu.cnt": "1",
+        "menu.price": "198000",
+        "total.total_price": "198000",
+        "total.cashprice": "200200",
+        "total.changeprice": "22000"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 7,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 10,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.nm": "JASMINE MT ( L )",
+        "menu.cnt": "1",
+        "menu.price": "24,000",
+        "menu.sub.nm": "COCONUT JELLY ( L )",
+        "menu.sub.price": "4,000",
+        "sub_total.subtotal_price": "28,000",
+        "total.total_price": "28,000",
+        "total.cashprice": "100,000",
+        "total.changeprice": "72,000",
+        "total.menuqty_cnt": "1"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 10,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 11,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "TWIST STRAWBERRY DONUT",
+        "menu.0.cnt": "1",
+        "menu.0.price": "10,000",
+        "menu.1.nm": "TLJ CROQUETTE",
+        "menu.1.cnt": "1",
+        "menu.1.price": "17,000",
+        "menu.2.nm": "POTATO PEPPER BAGEL",
+        "menu.2.cnt": "1",
+        "menu.2.price": "16,000",
+        "total.total_price": "43,000",
+        "total.cashprice": "50,000",
+        "total.changeprice": "7,000"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 12,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 12,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "5001-Corn Flakes Cookies",
+        "menu.0.unitprice": "Rp.56.000",
+        "menu.0.cnt": "x1",
+        "menu.0.price": "Rp.56.000",
+        "menu.1.nm": "5003-Chokoreto Cookies",
+        "menu.1.unitprice": "Rp.62.000",
+        "menu.1.cnt": "x1",
+        "menu.1.price": "Rp.62.000",
+        "menu.2.nm": "6002-Plastic Bag Medium",
+        "menu.2.unitprice": "Rp.0",
+        "menu.2.cnt": "x1",
+        "menu.2.price": "Rp.0",
+        "total.total_price": "Rp.118.000",
+        "total.creditcardprice": "118.000",
+        "total.menuqty_cnt": "3"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 15,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 13,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "THAI ICED TEA",
+        "menu.0.unitprice": "@20.000",
+        "menu.0.cnt": "1",
+        "menu.0.price": "20.000",
+        "menu.1.nm": "THAI ICED TEA",
+        "menu.1.unitprice": "@20.000",
+        "menu.1.cnt": "1",
+        "menu.1.price": "20.000",
+        "sub_total.subtotal_price": "40.000",
+        "total.total_price": "40.000",
+        "total.cashprice": "100.000",
+        "total.changeprice": "60.000"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 12,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 14,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "3002-Kyoto Choco Mochi",
+        "menu.0.unitprice": "14.000",
+        "menu.0.cnt": "x2",
+        "menu.0.price": "28.000",
+        "menu.1.nm": "1001-Choco Bun",
+        "menu.1.unitprice": "22.000",
+        "menu.1.cnt": "x1",
+        "menu.1.price": "22.000",
+        "menu.2.nm": "6001-Plastic Bag Small",
+        "menu.2.unitprice": "0",
+        "menu.2.cnt": "x1",
+        "menu.2.price": "0",
+        "total.total_price": "50.000",
+        "total.menuqty_cnt": "4"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 14,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 15,
+      "raw_generated_text": "<s> 0 0 0 0 0 0 SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU TAMBAHAN BAYA TAMBAHAN PAJAK PNN 10 % PAJAK PUN 10 % PAJAK 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</s>",
+      "parsed_fields": {
+        "text_sequence": "0 0 0 0 0 0 SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU SU TAMBAHAN BAYA TAMBAHAN PAJAK PNN 10 % PAJAK PUN 10 % PAJAK 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"
+      },
+      "gt_fields": {
+        "menu.nm": "FL-Xmas 30 Off",
+        "menu.cnt": "1",
+        "menu.price": "68,180",
+        "menu.sub.0.nm": "PAKET SLICES",
+        "menu.sub.0.cnt": "1",
+        "menu.sub.0.price": "0",
+        "menu.sub.1.nm": "FL Cake - French Vanilla SLC",
+        "menu.sub.1.cnt": "1",
+        "menu.sub.1.price": "0",
+        "menu.sub.2.nm": "PAKET SLICES",
+        "menu.sub.2.cnt": "1",
+        "menu.sub.2.price": "0",
+        "menu.sub.3.nm": "FL Cake - Green Tea SLC",
+        "menu.sub.3.cnt": "1",
+        "menu.sub.3.price": "0",
+        "menu.sub.4.nm": "PAKET SLICES",
+        "menu.sub.4.cnt": "1",
+        "menu.sub.4.price": "0",
+        "menu.sub.5.nm": "FL Cake - Belgium Choco SLC",
+        "menu.sub.5.cnt": "1",
+        "menu.sub.5.price": "0",
+        "sub_total.subtotal_price": "68,180",
+        "sub_total.discount_price": "0",
+        "sub_total.tax_price.0": "6,818",
+        "sub_total.tax_price.1": "0",
+        "sub_total.etc.0": "0",
+        "sub_total.etc.1": "0",
+        "sub_total.etc.2": "2",
+        "total.total_price": "75,000",
+        "total.cashprice": "0",
+        "total.changeprice": "0",
+        "total.creditcardprice": "75,000"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 32,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 16,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "(TA) NASI GRG TERI MEDAN",
+        "menu.0.cnt": "4",
+        "menu.0.price": "165,460",
+        "menu.1.nm": "(TA) BIHUN GORENG SEAFOOD",
+        "menu.1.cnt": "1",
+        "menu.1.price": "40,456",
+        "menu.2.nm": "(TA) KWETIAW SEAFOOD SIRAM",
+        "menu.2.cnt": "1",
+        "menu.2.price": "42,274",
+        "menu.3.nm": "(TA) NASI GORENG",
+        "menu.3.cnt": "2",
+        "menu.3.price": "55,456",
+        "sub_total.subtotal_price": "303,646",
+        "sub_total.tax_price": "30,365",
+        "sub_total.etc": "334,011",
+        "total.total_price": "334,000",
+        "total.total_etc": "-11",
+        "total.creditcardprice": "334,000",
+        "total.menuqty_cnt": "8"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 19,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 17,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "TALAM UNGU",
+        "menu.0.unitprice": "6500",
+        "menu.0.cnt": "1x",
+        "menu.0.discountprice": "-2 600",
+        "menu.0.price": "6,500",
+        "menu.1.nm": "AREM - AREM",
+        "menu.1.unitprice": "8000",
+        "menu.1.cnt": "1X",
+        "menu.1.discountprice": "-3,200",
+        "menu.1.price": "8,000",
+        "menu.2.nm": "LEMPER",
+        "menu.2.unitprice": "9000",
+        "menu.2.cnt": "2X",
+        "menu.2.discountprice": "-7.200",
+        "menu.2.price": "18,000",
+        "menu.3.nm": "MIKA SEDANG",
+        "menu.3.unitprice": "0",
+        "menu.3.cnt": "1X",
+        "menu.3.price": "0",
+        "menu.4.nm": "PLASTIK KECIL",
+        "menu.4.unitprice": "0",
+        "menu.4.cnt": "1X",
+        "menu.4.price": "0",
+        "menu.5.nm": "TEH KOTAK",
+        "menu.5.unitprice": "5000",
+        "menu.5.cnt": "1X",
+        "menu.5.price": "5,000",
+        "sub_total.subtotal_price": "24,500",
+        "total.total_price": "24,500",
+        "total.creditcardprice": "24,500",
+        "total.menuqty_cnt": "7.00"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 31,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 18,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "ICE BLACKCOFFE",
+        "menu.0.cnt": "2",
+        "menu.0.price": "82,000",
+        "menu.1.nm": "AVOCADO COFFEE",
+        "menu.1.cnt": "1",
+        "menu.1.price": "61,000",
+        "menu.2.nm": "CHIKEN KATSU FF",
+        "menu.2.cnt": "1",
+        "menu.2.price": "51,000",
+        "sub_total.subtotal_price": "194,000",
+        "sub_total.discount_price": "19,400",
+        "total.total_price": "174,600",
+        "total.cashprice": "200,000",
+        "total.changeprice": "25,400"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 14,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "index": 19,
+      "raw_generated_text": "<s></s>",
+      "parsed_fields": {
+        "text_sequence": ""
+      },
+      "gt_fields": {
+        "menu.0.nm": "BUBUR GO",
+        "menu.0.unitprice": "20.000",
+        "menu.0.cnt": "2",
+        "menu.0.price": "40.000",
+        "menu.1.nm": "PUYUH GO",
+        "menu.1.price": "6.000",
+        "menu.2.nm": "SATE ATI GO",
+        "menu.2.unitprice": "3.000",
+        "menu.2.cnt": "3",
+        "menu.2.price": "9.000",
+        "total.total_price": "55.000",
+        "total.cashprice": "55.000",
+        "total.menuqty_cnt": "6.00xITEMS"
+      },
+      "metrics": {
+        "correct_fields": 0,
+        "gt_field_count": 13,
+        "pred_field_count": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    }
+  ]
+}
