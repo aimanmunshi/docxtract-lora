@@ -1,0 +1,15 @@
+# Core deep learning stack
+# NOTE: install torch with CUDA support via the PyTorch index for GPU:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu124
+# The pinned versions below are known-compatible with Donut + PEFT.
+torch>=2.2
+transformers>=4.40,<4.46
+peft>=0.11
+datasets>=2.19
+accelerate>=0.30
+evaluate>=0.4
+sentencepiece>=0.2
+protobuf>=3.20
+pillow>=10.0
+jiwer>=3.0
+matplotlib>=3.8
