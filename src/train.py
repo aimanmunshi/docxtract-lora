@@ -15,15 +15,18 @@ What this does and why:
      entirely: this task is about learning CORD's output structure, not
      new visual features, and donut-base's encoder already generalizes
      well to document images.
-  4. Trains for a few epochs with bf16 mixed precision (native support on
-     this Ampere GPU, so no loss-scaling complexity), logging per-step
-     loss and saving a loss curve.
+  4. Trains with bf16 mixed precision (native support on this Ampere GPU,
+     so no loss-scaling complexity), logging per-step loss and saving a
+     loss curve. An initial 3-epoch run left validation loss still
+     dropping steadily (6.58 -> 2.72 -> 1.82), so the default here is 6
+     epochs — still only ~6 minutes on an RTX 3050 6GB, and val loss
+     kept improving through epoch 6 (-> 0.92) without diverging.
   5. Saves only the LoRA adapter (+ resized tokenizer/processor) to
      /checkpoints — never the full ~800MB base model.
 
 Usage:
     python src/train.py
-    python src/train.py --epochs 3 --lr 1e-4 --batch_size 1 --grad_accum 4
+    python src/train.py --epochs 6 --lr 1e-4 --batch_size 1 --grad_accum 4
 """
 
 import argparse
@@ -40,7 +43,6 @@ from cord_utils import (
     LM_HEAD_MODULE_NAME,
     LORA_TARGET_MODULES,
     TASK_END_TOKEN,
-    TASK_START_TOKEN,
     extend_vocab_for_cord,
     json2token,
     load_base_processor_and_model,
@@ -69,7 +71,12 @@ class CordSeq2SeqDataset(Dataset):
         ).pixel_values.squeeze(0)
 
         gt = parse_ground_truth(example["ground_truth"])
-        target_text = TASK_START_TOKEN + json2token(gt) + TASK_END_TOKEN
+        # No leading TASK_START_TOKEN here: VisionEncoderDecoderModel's
+        # label-shifting (shift_tokens_right) already prepends
+        # decoder_start_token_id (== TASK_START_TOKEN's id) as the implicit
+        # BOS context. Including it again in the label text would train the
+        # model on a duplicated "<s_cord-v2><s_cord-v2>..." pattern.
+        target_text = json2token(gt) + TASK_END_TOKEN
 
         labels = self.processor.tokenizer(
             target_text,
@@ -224,7 +231,7 @@ def plot_loss_curve(training_log):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--epochs", type=int, default=3)
+    parser.add_argument("--epochs", type=int, default=6)
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--batch_size", type=int, default=1)
     parser.add_argument("--grad_accum", type=int, default=4)

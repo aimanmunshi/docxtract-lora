@@ -258,14 +258,25 @@ def generate_and_parse(model, processor, image, prompt_token: str, max_length: i
         prompt_token, add_special_tokens=False, return_tensors="pt"
     ).input_ids.to(device)
 
+    # The fine-tuned model is trained to end sequences with TASK_END_TOKEN
+    # (</s_cord-v2>), not the tokenizer's native </s> — it was never trained
+    # to follow TASK_END_TOKEN with native eos, so generation must stop on
+    # whichever token the current vocab/training actually uses as the end
+    # marker, or it runs to max_length and degenerates into repetition.
+    if prompt_token == TASK_START_TOKEN:
+        stop_token_id = processor.tokenizer.convert_tokens_to_ids(TASK_END_TOKEN)
+    else:
+        stop_token_id = processor.tokenizer.eos_token_id
+
     output_ids = model.generate(
         pixel_values,
         decoder_input_ids=decoder_input_ids,
         max_length=max_length,
         pad_token_id=processor.tokenizer.pad_token_id,
-        eos_token_id=processor.tokenizer.eos_token_id,
+        eos_token_id=stop_token_id,
         num_beams=1,
         do_sample=False,
+        no_repeat_ngram_size=3,
     )
 
     raw_text = processor.tokenizer.batch_decode(output_ids)[0]
